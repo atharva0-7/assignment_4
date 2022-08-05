@@ -1,11 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import '../providers/stock_provider.dart';
 
 class StockContainer extends StatelessWidget {
-  const StockContainer({Key? key}) : super(key: key);
+  Color color;
+  String imageUrl;
+  String stockPrice;
+  String title;
+  StockContainer({required this.imageUrl,required this.stockPrice,required this.title,required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +18,10 @@ class StockContainer extends StatelessWidget {
      
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: const Color(0xFFAADE98)
+        color: color
       ),
       child: Row(
-        
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children:[
         Padding(
           padding: const EdgeInsets.only(left:8.0),
@@ -27,20 +29,29 @@ class StockContainer extends StatelessWidget {
             radius: 20,
             backgroundColor: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(2.0),
               child: ClipOval(
-                child: Image.network("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png")),
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  progressIndicatorBuilder: (context, url, downloadProgress) => 
+                CircularProgressIndicator(value: downloadProgress.progress),
+                  // placeholder: (context, url) => CircularProgressIndicator(),
+                  imageUrl: imageUrl,
+                 ),
+              ),
             ),
             ),
         ),
-          Padding(
-            padding: const EdgeInsets.only(left:16.0),
-            child: Text("APPLE",style: GoogleFonts.rocknRollOne(fontSize: 24,fontWeight: FontWeight.w400),),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.only(left:16.0),
+              child: Text(title,style: GoogleFonts.rocknRollOne(fontSize: 24,fontWeight: FontWeight.w400),),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left:97),
-            child: Text("\$${Provider.of<StockProvider>(context).getStockPrice()}",style: GoogleFonts.rocknRollOne(fontSize: 24,fontWeight: FontWeight.w400),),
-          )
+          Expanded(
+            flex: 1,
+            child: Text("\$$stockPrice",style: GoogleFonts.rocknRollOne(fontSize: 24,fontWeight: FontWeight.w400),))
       ]
       ),
     );

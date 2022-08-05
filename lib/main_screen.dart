@@ -40,7 +40,12 @@ void initState() {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          const StockContainer(),
+           StockContainer(
+            title: "APPLE",
+            color: Color(0xFFAADE98),
+            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
+            stockPrice: Provider.of<StockProvider>(context).getStockPrice().toString(),
+          ),
           Padding(
             padding: const EdgeInsets.only(top:106),
             child: Text("Quantity: ${Provider.of<StockProvider>(context).getQuantity()}",style: GoogleFonts.rocknRollOne(fontSize: 32),),
