@@ -42,7 +42,7 @@ void initState() {
         child: Column(children: [
            StockContainer(
             title: "APPLE",
-            color: Color(0xFFAADE98),
+            color: const Color(0xFFAADE98),
             imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
             stockPrice: Provider.of<StockProvider>(context).getStockPrice().toString(),
           ),
