@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StockContainer extends StatelessWidget {
-  Color color;
-  String imageUrl;
-  String stockPrice;
-  String title;
-  StockContainer({required this.imageUrl,required this.stockPrice,required this.title,required this.color});
+  final Color color;
+  final String imageUrl;
+  final String stockPrice;
+  final String title;
+  const StockContainer({required this.imageUrl,required this.stockPrice,required this.title,required this.color,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class StockContainer extends StatelessWidget {
             radius: 20,
             backgroundColor: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(2.0),
+              padding: const EdgeInsets.all(3.0),
               child: ClipOval(
                 child: CachedNetworkImage(
                   fit: BoxFit.cover,
