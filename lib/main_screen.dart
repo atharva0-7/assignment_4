@@ -40,7 +40,24 @@ void initState() {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
-          const StockContainer(),
+           StockContainer(
+            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
+            title: "APPLE",
+            stockPrice: Provider.of<StockProvider>(context).getAppleStockPrice().toString(),
+            color: const Color(0xFFAADE98)
+           ),
+           StockContainer(
+            imageUrl: "https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg",
+            title: "AMAZON",
+            stockPrice: Provider.of<StockProvider>(context).getAmazonStockPrice().toString(),
+            color: const Color.fromARGB(255, 222, 203, 152)
+           ),
+           StockContainer(
+            imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png",
+            title: "SAMSUNG",
+            stockPrice: Provider.of<StockProvider>(context).getSamsungStockPrice().toString(),
+            color: const Color(0xFFAADE98)
+           ),
           Padding(
             padding: const EdgeInsets.only(top:106),
             child: Text("Quantity: ${Provider.of<StockProvider>(context).getQuantity()}",style: GoogleFonts.rocknRollOne(fontSize: 32),),
