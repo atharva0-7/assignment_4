@@ -9,8 +9,9 @@ class StockProvider with ChangeNotifier{
   int _totalPrice = 0;
 
   
-   generateStockPrice(Random random)
- {
+   generateStockPrice()
+  {
+    Random random = Random();
      _stockPrice = random.nextInt(100);
      notifyListeners();
   }

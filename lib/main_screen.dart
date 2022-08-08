@@ -17,12 +17,12 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   late Timer timer;
-  Random random =  Random();
+  // Random random =  Random();
 @override 
 void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      Provider.of<StockProvider>(context,listen: false).generateStockPrice(random);
+      Provider.of<StockProvider>(context,listen: false).generateStockPrice();
       Provider.of<StockProvider>(context,listen: false).incrementQuantityAndTotalPrice();
 
     } );
@@ -33,6 +33,7 @@ void initState() {
       
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xFF00A3FF).withOpacity(0.71),
         title:  Text("Portfolio",style:GoogleFonts.rocknRollOne(
           fontSize: 32
         ),),
