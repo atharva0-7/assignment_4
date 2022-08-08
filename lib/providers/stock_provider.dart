@@ -4,37 +4,40 @@ import 'package:flutter/material.dart';
 
 class StockProvider with ChangeNotifier{
   
-  int _appleStockPrice = 0;
-  int _amazonStockPrice = 0;
-  int _samsungStockPrice = 0;
+  int _stockPrice = 0;
+  int _amazonStock = 0;
+  int _samsungStock = 0;
+  int _appleStock = 0;
+
   int _quantity = 0;
   int _totalPrice = 0;
 
   
-   generateStockPrice(Random random)
- {
-     _amazonStockPrice = random.nextInt(100);
-     _appleStockPrice = random.nextInt(100);
-     _samsungStockPrice = random.nextInt(100);
+   generateStockPrice()
+  {
+     Random random = Random();
+     _amazonStock = random.nextInt(100);
+     _samsungStock = random.nextInt(100);
+     _appleStock = random.nextInt(100);
      notifyListeners();
   }
 
   
   incrementQuantityAndTotalPrice()
   {
-    if(_amazonStockPrice < 20 )
+    if(_amazonStock < 20 )
     {
-      _totalPrice += _amazonStockPrice;
+      _totalPrice += _amazonStock;
       _quantity++;
     }
-    if(_appleStockPrice<20)
+    if(_samsungStock<20)
     {
-      _totalPrice += _appleStockPrice;
+       _totalPrice += _samsungStock;
       _quantity++;
     }
-     if(_samsungStockPrice<20)
+    if(_appleStock<20)
     {
-      _totalPrice += _samsungStockPrice;
+       _totalPrice += _appleStock;
       _quantity++;
     }
     notifyListeners();
@@ -45,17 +48,17 @@ class StockProvider with ChangeNotifier{
   {
     return _totalPrice;
   }
-  getAppleStockPrice()
+  getApplePrice()
   {
-    return _appleStockPrice;
+    return _appleStock;
   }
-  getSamsungStockPrice()
+    getSamsungPrice()
   {
-    return _samsungStockPrice;
+    return _samsungStock;
   }
-  getAmazonStockPrice()
+    getAmazonPrice()
   {
-    return _amazonStockPrice;
+    return _amazonStock;
   }
   getQuantity()
   {

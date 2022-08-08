@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
 void initState() {
     super.initState();
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      Provider.of<StockProvider>(context,listen: false).generateStockPrice(random);
+      Provider.of<StockProvider>(context,listen: false).generateStockPrice();
       Provider.of<StockProvider>(context,listen: false).incrementQuantityAndTotalPrice();
 
     } );
@@ -44,19 +44,19 @@ void initState() {
             title: "APPLE",
             color: const Color(0xFFAADE98),
             imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
-            stockPrice: Provider.of<StockProvider>(context).getAppleStockPrice().toString(),
+            stockPrice: Provider.of<StockProvider>(context).getApplePrice().toString(),
           ),
            StockContainer(
             title: "SAMSUNG",
             color: const Color(0xFFAADE98),
             imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
-            stockPrice: Provider.of<StockProvider>(context).getSamsungStockPrice().toString(),
+            stockPrice: Provider.of<StockProvider>(context).getSamsungPrice().toString(),
           ),
            StockContainer(
             title: "AMAZON",
             color: const Color(0xFFAADE98),
             imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1667px-Apple_logo_black.svg.png",
-            stockPrice: Provider.of<StockProvider>(context).getAmazonStockPrice().toString(),
+            stockPrice: Provider.of<StockProvider>(context).getAmazonPrice().toString(),
           ),
           Padding(
             padding: const EdgeInsets.only(top:106),
